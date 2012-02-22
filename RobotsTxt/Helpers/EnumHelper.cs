@@ -1,7 +1,11 @@
-﻿namespace RobotsTxt {
-    internal static class EnumHelper {
-        internal static LineType GetLineType(string field) {
-            switch (field) {
+﻿namespace RobotsTxt
+{
+    internal static class EnumHelper
+    {
+        internal static LineType GetLineType(string field)
+        {
+            switch (field)
+            {
                 case "user-agent":
                     return LineType.UserAgent;
                 case "allow":

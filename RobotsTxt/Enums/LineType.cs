@@ -1,5 +1,7 @@
-﻿namespace RobotsTxt {
-    internal enum LineType {
+﻿namespace RobotsTxt
+{
+    internal enum LineType
+    {
         Comment,
         UserAgent,
         Sitemap,
