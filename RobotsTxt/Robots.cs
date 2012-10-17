@@ -71,7 +71,10 @@ namespace RobotsTxt
                 return;
             }
 
-            string[] lines = content.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = content
+                .Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                .Where(l => !String.IsNullOrWhiteSpace(l))
+                .ToArray();
             if (lines.Length == 0)
             {
                 return;

@@ -106,6 +106,15 @@ namespace RobotsTxtTests
         }
 
         [Test, Category("Constructor")]
+        public void Robots_WhiteSpaceOnlyLines_StripsOutWhiteSpaceOnlyLines()
+        {
+            string s = "User-agent: *" + nl + "    " + nl + "Disallow: /";
+            Robots r = new Robots(s);
+            Assert.False(r.Malformed);
+            Assert.True(r.HasRules);
+        }
+
+        [Test, Category("Constructor")]
         public void Robots_ValidWithoutRules_NotMalformedAndDoesntHaveRules()
         {
             string s = "User-agent: *";
