@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace RobotsTxt
 {
@@ -10,7 +11,7 @@ namespace RobotsTxt
             : base(userAgent, order)
         {
             double delay = 0;
-            Double.TryParse(line.Value, out delay);
+            Double.TryParse(line.Value, NumberStyles.Float, CultureInfo.InvariantCulture, out delay);
             Delay = (long)(delay * 1000);
         }
     }
