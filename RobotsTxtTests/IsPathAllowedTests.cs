@@ -67,9 +67,17 @@ namespace RobotsTxtTests
 
         [Test, Category("IsPathAllowed")]
         public void IsPathAllowed_UserAgentStringCaseInsensitive_False(
-            [Values("Slurp", "slurp", "Exabot", "exabot")] string userAgent)
+            [Values("Slurp", "slurp", "Exabot", "exabot", "FigTree/0.1 Robot libwww-perl/5.04")] string userAgent)
         {
-            string s = "User-agent: Slurp" + nl + "Disallow: /" + nl + "User-agent: Exabot" + nl + "Disallow: /";
+            string s = 
+@"User-agent: Slurp
+Disallow: /
+User-agent: Exabot
+Disallow: /
+User-agent: Exabot
+Disallow: /
+User-agent: figtree
+Disallow: /";
             Robots r = Robots.Load(s);
             Assert.False(r.IsPathAllowed(userAgent, "/dir"));
         }

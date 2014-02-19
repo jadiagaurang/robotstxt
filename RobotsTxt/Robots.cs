@@ -152,14 +152,17 @@ namespace RobotsTxt
         /// empty or consists only of white-space characters.</exception>
         public bool IsPathAllowed(string userAgent, string path)
         {
-            if (String.IsNullOrWhiteSpace(userAgent)) throw new ArgumentException("Not a valid user-agent string.", "userAgent");
+            if (String.IsNullOrWhiteSpace(userAgent))
+            {
+                throw new ArgumentException("Not a valid user-agent string.", "userAgent");
+            }
             if (!HasRules || !IsAnyPathDisallowed)
             {
                 return true;
             }
 
             path = normalizePath(path);
-            var rulesForThisRobot = specificAccessRules.FindAll(x => x.For.IndexOf(userAgent, StringComparison.InvariantCultureIgnoreCase) >= 0);
+            var rulesForThisRobot = specificAccessRules.FindAll(x => userAgent.IndexOf(x.For, StringComparison.InvariantCultureIgnoreCase) >= 0);
             if (globalAccessRules.Count == 0 && rulesForThisRobot.Count == 0)
             {
                 // no rules for this robot
