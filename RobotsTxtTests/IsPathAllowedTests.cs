@@ -164,6 +164,7 @@ Disallow: /";
         [TestCase("/private*/", "/private1/f.html", Result = false)]
         [TestCase("/private*/", "/private1/dir/", Result = false)]
         [TestCase("/private*/", "/private1/dir/f.html", Result = false)]
+        [TestCase("*/private/", "/private/dir/f.html", Result = false)]
         [Test, Category("IsPathAllowed")]
         public bool IsPathAllowed_StarWildcard(string rule, string path)
         {

@@ -11,11 +11,18 @@ namespace RobotsTxt
             : base(userAgent, order)
         {
             Path = line.Value;
-            if (!String.IsNullOrEmpty(Path) && !Path.StartsWith("/"))
+            if (!String.IsNullOrEmpty(Path))
             {
-                Path = "/" + Path;
+                // get rid of the preceding * wild char
+                while (Path.StartsWith("*", StringComparison.Ordinal))
+                {
+                    Path = Path.Substring(1);
+                }
+                if (!Path.StartsWith("/"))
+                {
+                    Path = "/" + Path;
+                }
             }
-
             Allowed = line.Field.ToLowerInvariant().Equals("allow");
         }
     }
