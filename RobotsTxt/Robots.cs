@@ -144,7 +144,7 @@ namespace RobotsTxt
         }
 
         /// <summary>
-        /// Checks if the given user-agent can access the given path.
+        /// Checks if the given user-agent can access the given relative path.
         /// </summary>
         /// <param name="userAgent">User agent string.</param>
         /// <param name="path">Relative path.</param>
